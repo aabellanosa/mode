@@ -110,10 +110,10 @@
         /* info and events */
         .info_events {
             margin: 20px auto;
+            max-width: 1024px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
-            padding: 20px;
         }
         .info_events div {
             padding: 20px;
@@ -133,19 +133,37 @@
         }
         /* other info */
         .other_info {
+            max-width: 1024px;
             background-color: red;
             text-align: center;
             padding: 20px;
-            margin: 0 20px 40px 20px;
+            margin: 0 auto 40px auto;
         }
         .contact {
+            max-width: 1024px;
             background-color: red;
             text-align: center;
-            margin: 0 20px 40px 20px;
+            margin: 0 auto 40px auto;
         }
         /* footer style */
         footer {
             background-color: #c9bdbd;
+            padding: 20px;
+        }
+        footer div {
+            max-width: 1024px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
+        footer a {
+            text-decoration: none;
+            color: rgb(88, 87, 87);
+        }
+        footer p {
+            text-align: center;
+            color: rgb(88, 87, 87);
+            padding-top: 20px;
         }
     </style>
 </head>
@@ -237,20 +255,22 @@
         </div>
     </main>
     <footer>
-        <a href="#">About Us</a> 
-        <a href="#">Getting Here</a>
-        <a href="#">FAQs</a>
-        <a href="#">Places to Stay</a>
-        <a href="#">Things to Do</a>
-        <a href="#">Events Calendar</a>
-        <a href="#">Restaurants</a>
-        <a href="#">Nightlife</a>
-        <a href="#">Shopping</a>
-        <a href="#">Plan Your Trip</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Newsletter Signup</a>
+        <div>
+            <a href="#">About Us</a>
+            <a href="#">Getting Here</a>
+            <a href="#">FAQs</a>
+            <a href="#">Places to Stay</a>
+            <a href="#">Things to Do</a>
+            <a href="#">Events Calendar</a>
+            <a href="#">Restaurants</a>
+            <a href="#">Nightlife</a>
+            <a href="#">Shopping</a>
+            <a href="#">Plan Your Trip</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Newsletter Signup</a>
+        </div>
         <p>&copy; 2026 All Rights Reserved</p>
-
+        
     </footer>
     <script>
         //an ai solution to play video if >50% is shown pause otherswise
