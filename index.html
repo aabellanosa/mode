@@ -59,10 +59,10 @@
             padding: 40px;
         }
         .map .back {
-            height: 70vh;
-            width: 100vw;
+            height: 75vh;
+            width: 90vw;
             background-image: url(./images/lyon-map.jpg);
-            background-size: fit;
+            background-size: contain;
             margin: auto;
             display: flex;
             gap: 10px;
@@ -70,14 +70,19 @@
         .back .cards {
             margin: auto;
             width: 50%;
-            padding: 10px;
             display: grid;
             gap: 10px;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: min-content min-content;
+            overflow-y: visible;
+            padding: 10px;
         }
         .cards div {
-            padding: 5px;
+            padding: 10px;
+            text-align: center;
+        }
+        .cards figure img {
+            width: 80%;
         }
         .cards figcaption {
             font-size: .8rem;
@@ -114,12 +119,11 @@
             <h2>Map Attractions</h2>
             <div class="back">
                 <div class="cards">
-                    <div>
+                    <div style="padding: 10px;">
                         <figure>
                             <img 
                                 src="./images/attraction-a.jpg" 
                                 alt="attraction image a"
-                                style="width: 100%;"
                             >
                             <figcaption>Park de la Tete</figcaption>
                         </figure>
@@ -127,9 +131,8 @@
                     <div>
                         <figure>
                             <img 
-                                src="./images/attraction-a.jpg" 
+                                src="./images/attraction-b.jpg" 
                                 alt="attraction image a"
-                                style="width: 100%;"
                             >
                             <figcaption>Park de la Tete</figcaption>
                         </figure>
@@ -137,9 +140,8 @@
                     <div>
                         <figure>
                             <img 
-                                src="./images/attraction-a.jpg" 
+                                src="./images/attraction-c.jpg" 
                                 alt="attraction image a"
-                                style="width: 100%;"
                             >
                             <figcaption>Park de la Tete</figcaption>
                         </figure>
@@ -147,9 +149,8 @@
                     <div>
                         <figure>
                             <img 
-                                src="./images/attraction-a.jpg" 
+                                src="./images/all-attractions.jpg" 
                                 alt="attraction image a"
-                                style="width: 100%;"
                             >
                             <figcaption>Park de la Tete</figcaption>
                         </figure>
@@ -159,7 +160,7 @@
             </div>
         </div>
         <div class="vid">
-            <video autoplay loop>
+            <video loop>
                 <source src="./video/lyon.mp4" type="video/mp4" />
                 <p>
                     Your browser doesn't support HTML video. Here is a
@@ -168,5 +169,32 @@
             </video>
         </div>
     </main>
+
+    <script>
+        //an ai solution to play video if >50% is shown pause otherswise
+        // 1. Select the video element
+            const video = document.querySelector('video');
+
+        // 2. Define the callback and options
+        const options = {
+            root: null,      // Use the browser viewport
+            threshold: 0.5   // Trigger at 50% visibility
+        };
+
+        const callback = (entries) => {
+            entries.forEach(entry => {
+                // entry.isIntersecting is true if >= 50% is visible
+                if (entry.isIntersecting) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+        };
+
+        // 3. Initialize and start the observer
+        const observer = new IntersectionObserver(callback, options);
+        observer.observe(video);
+    </script>
 </body>
 </html>
