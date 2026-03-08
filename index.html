@@ -4,168 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lyon Tourist Page</title>
-    <style>
-        * {
-            font: 1.2rem/1.5 sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <link rel="stylesheet" href="./css/style.css">
 
-        /* header */
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            padding: 20px;
-            background-color: rgba(151, 149, 149, 0.6);
-            position: sticky;
-            top: 0px;
-            backdrop-filter: blur(3px);
-        }
-        h1 {
-            text-transform: uppercase;
-        }
-        nav a {
-            text-decoration: none;
-            padding: 20px;
-            margin-left: 40px;
-        }
-
-        /* hero secttion */
-        .hero {
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
-            background-image: url('./images/cover.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .hero button {
-            padding: 20px 30px;
-            border-radius: 10px;
-            font-size: .8rem;
-            transition: all .3s ease-in-out;
-        }
-        .hero button:hover {
-            transform: scale(1.1);
-            cursor: pointer;
-        }
-        /* map */
-        .map {
-            height: 100vh;
-            width: 100vw;
-            margin-bottom: 40px;
-        }
-        h2 {
-            font-size: 2rem;
-            text-align: center;
-            padding: 40px;
-        }
-        .map .back {
-            height: 80vh;
-            width: 90vw;
-            background-image: url(./images/lyon-map.jpg);
-            background-size: contain;
-            margin: auto;
-            display: flex;
-            gap: 10px;
-        }
-        .back .cards {
-            margin: auto;
-            width: 50%;
-            display: grid;
-            gap: 10px;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: min-content min-content;
-            overflow-y: visible;
-            padding: 10px;
-        }
-        .cards div {
-            padding: 10px;
-            text-align: center;
-        }
-        .cards figure img {
-            width: 80%;
-        }
-        .cards figcaption {
-            font-size: .8rem;
-        }
-        .back .blank {
-            width: 50%;
-        }
-        .back .cards div {
-            border: 1px solid;
-            background-color: white;
-        }
-
-        /* video */
-        .vid, video {
-            width: 100vw;
-        }
-        /* info and events */
-        .info_events {
-            margin: 20px auto;
-            max-width: 1024px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-        .info_events div {
-            padding: 20px;
-        }
-        .info_events p, .info_events button {
-            font-size:  1rem;
-            padding-bottom: 5px;
-        }
-        .info, .events {
-            background-color: red;
-        }
-        .info button {
-            background-color: blue;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 10px;
-        }
-        /* other info */
-        .other_info {
-            max-width: 1024px;
-            background-color: red;
-            text-align: center;
-            padding: 20px;
-            margin: 0 auto 40px auto;
-        }
-        .contact {
-            max-width: 1024px;
-            background-color: red;
-            text-align: center;
-            margin: 0 auto 40px auto;
-        }
-        /* footer style */
-        footer {
-            background-color: #c9bdbd;
-            padding: 20px;
-        }
-        footer div {
-            max-width: 1024px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-        }
-        footer a {
-            text-decoration: none;
-            color: rgb(88, 87, 87);
-        }
-        footer p {
-            text-align: center;
-            color: rgb(88, 87, 87);
-            padding-top: 20px;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -185,7 +25,7 @@
             <h2>Map Attractions</h2>
             <div class="back">
                 <div class="cards">
-                    <div style="padding: 10px;">
+                    <div id="cardA">
                         <figure>
                             <img 
                                 src="./images/attraction-a.jpg" 
@@ -194,7 +34,7 @@
                             <figcaption>Park de la Tete</figcaption>
                         </figure>
                     </div>
-                    <div>
+                    <div id="cardB">
                         <figure>
                             <img 
                                 src="./images/attraction-b.jpg" 
@@ -203,7 +43,7 @@
                             <figcaption>Street</figcaption>
                         </figure>
                     </div>
-                    <div>
+                    <div id="cardC">
                         <figure>
                             <img 
                                 src="./images/attraction-c.jpg" 
@@ -212,7 +52,7 @@
                             <figcaption>River</figcaption>
                         </figure>
                     </div>
-                    <div>
+                    <div id="cardD">
                         <figure>
                             <img 
                                 src="./images/all-attractions.jpg" 
@@ -222,7 +62,13 @@
                         </figure>
                     </div>
                 </div>
-                <div class="blank"></div>
+                <div class="blank">
+                    <div class="pins">
+                        <div id="pinA">📍A</div>
+                        <div id="pinB">📍B</div>
+                        <div id="pinC">📍C</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="vid">
@@ -243,6 +89,32 @@
             </div>
             <div class="events">
                 <h2>Latest Events</h2>
+                <div>
+                    <figure>
+                        <img src="./images/worldskills-2024-p.jpg" alt="event image a">
+                        <figcaption>Lyon accueille la finale mondiale des Worldskills 2024</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="./images/fda-p.jpg" alt="event image b">
+                        <figcaption>Forum des associations 2024</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="./images/lyon-kayak-p-0.jpg" alt="event image c">
+                        <figcaption>Lyon Kayak</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="./images/semaine-bleue-2024-p.jpg" alt="event image d`">
+                        <figcaption>La semaine bleue 2024</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="./images/village-des-metiers-p.jpg" alt="event image e`">
+                        <figcaption>Le Village des Métiers</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="./images/journees_portes_ouvertes_entreprises_2023_p.jpg" alt="event image f`">
+                        <figcaption>Les Journées Portes Ouvertes des Entreprises</figcaption>
+                    </figure>
+                </div>
             </div>
         </div>
         <div class="other_info">
@@ -275,7 +147,7 @@
     <script>
         //an ai solution to play video if >50% is shown pause otherswise
         // 1. Select the video element
-            const video = document.querySelector('video');
+        const video = document.querySelector('video');
 
         // 2. Define the callback and options
         const options = {
@@ -297,6 +169,45 @@
         // 3. Initialize and start the observer
         const observer = new IntersectionObserver(callback, options);
         observer.observe(video);
+
+        function effA() {
+            document.querySelector('#cardA').classList.add('eff')
+        }
+        
+        function effAout() {
+            document.querySelector('#cardA').classList.remove('eff')
+        }
+        function effB() {
+            document.querySelector('#cardB').classList.add('eff')
+        }
+        function effBout() {
+            document.querySelector('#cardB').classList.remove('eff')
+        }
+        function effC() {
+            document.querySelector('#cardC').classList.add('eff')
+        }
+        function effCout() {
+            document.querySelector('#cardC').classList.remove('eff')
+        }
+        function effD() {
+            document.querySelector('#cardD').classList.add('eff')
+        }
+        function effDout() {
+            document.querySelector('#cardD').classList.remove('eff')
+        }
+
+        let mapA = document.querySelectorAll('#pinA, #cardA');
+        mapA.forEach(el => el.addEventListener('mouseover', effA))
+        mapA.forEach(el => el.addEventListener('mouseout', effAout))
+        let mapB = document.querySelectorAll('#pinB, #cardB');
+        mapB.forEach(el => el.addEventListener('mouseover', effB))
+        mapB.forEach(el => el.addEventListener('mouseout', effBout))
+        let mapC = document.querySelectorAll('#pinC, #cardC');
+        mapC.forEach(el => el.addEventListener('mouseover', effC))
+        mapC.forEach(el => el.addEventListener('mouseout', effCout))
+        document.querySelector('#cardD').addEventListener('mouseover', effD)
+        document.querySelector('#cardD').addEventListener('mouseout', effDout)
+
     </script>
 </body>
 </html>
