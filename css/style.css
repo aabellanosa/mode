@@ -61,7 +61,7 @@
         margin-bottom: 40px;
     }
 
-    h2 {
+    h2, legend {
         font-size: 2rem;
         text-align: center;
         padding: 2dvb;
@@ -171,11 +171,6 @@
         padding-bottom: 5px;
     }
 
-    /* .info,
-    .events {
-        background-color: red;
-    } */
-
     .info button {
         background-color: blue;
         color: white;
@@ -211,12 +206,36 @@
         margin: 0 auto 40px auto;
     }
 
+    /* contact */
     .contact {
         max-width: 1024px;
-        background-color: red;
-        text-align: center;
         margin: 0 auto 40px auto;
     }
+    fieldset {
+        padding: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    fieldset div {
+        display: flex;
+    }
+
+    fieldset label {
+        flex-grow: 0;
+    }
+
+    fieldset input {
+        flex-grow: 1;
+    }
+
+    legend {
+        border: 1px solid;
+        font-weight: bold;
+        padding: 20px;
+    }
+
 
     /* footer style */
     footer {
