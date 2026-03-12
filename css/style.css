@@ -64,8 +64,9 @@
     h2, legend {
         font-size: 2rem;
         text-align: center;
-        padding: 2dvb;
+        font-weight: bold;
     }
+
 
     .map .back {
         height: 80vh;
@@ -200,10 +201,37 @@
     /* other info */
     .other_info {
         max-width: 1024px;
-        background-color: red;
-        text-align: center;
         padding: 20px;
         margin: 0 auto 40px auto;
+        height: 250px;
+    }
+    .tab {
+        border-bottom: 1px solid gray;
+        margin: auto;
+        width: 750px;
+        display: flex;
+    }
+    .tabcontent {
+        width: 750px;
+        margin: auto;
+    }
+
+    .tab input {
+        cursor: pointer;
+        padding: 14px 16px; 
+        border: none;
+        background-color: rgb(231, 231, 231);
+        font-size: 1rem;
+    }
+    .tab input:focus {
+        outline: none;
+        border-bottom: 3px solid blue;
+        background-color: white;
+    }
+    .tabcontent {
+        display: none;
+        padding: 20px 10px;
+        font-size: .9rem;
     }
 
     /* contact */
@@ -211,7 +239,7 @@
         max-width: 1024px;
         margin: 0 auto 40px auto;
     }
-    fieldset {
+    fieldset .data{
         padding: 30px;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -233,7 +261,7 @@
     legend {
         border: 1px solid;
         font-weight: bold;
-        padding: 20px;
+        padding: 15px 40px;
     }
 
 
