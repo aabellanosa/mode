@@ -119,19 +119,19 @@
         </div>
         <div class="other_info">
             <h2>Other Information</h2>
-            <div class="tab">
-                <input type="button" value="Tab 1">
-                <input type="button" value="Tab 2">
-                <input type="button" value="Tab 3">
+            <div class="tab" role="tablist">
+                <input type="button" value="Tab 1" role="tab" id="tabl">
+                <input type="button" value="Tab 2" role="tab" id="tab2">
+                <input type="button" value="Tab 3" role="tab" id="tab3">
             </div>
 
-            <div class="tabcontent">
+            <div class="tabcontent" aria-labelledby="tab1">
                 This is the content for Tab 1.
             </div>
-            <div class="tabcontent">
+            <div class="tabcontent" aria-labelledby="tab2">
                 This is the content for Tab 2.
             </div>
-            <div class="tabcontent">
+            <div class="tabcontent" aria-labelledby="tab3">
                 This is the content for Tab 3.
             </div>
         </div>
@@ -157,6 +157,14 @@
                     </div>
                 </div>
             </fieldset>
+        </div>
+        <div class="game">
+            <h2>🎉 Event Coupon Game 🎉</h2>
+            <p>Click the button to try your luck!</p>
+            <button id="playBtn">Play</button>
+            <div id="spinner"></div>
+            <div id="result"></div>
+            <button id="restartBtn" style="display:none;">Restart</button>
         </div>
     </main>
     <footer>
@@ -206,7 +214,6 @@
         function effA() {
             document.querySelector('#cardA').classList.add('eff')
         }
-        
         function effAout() {
             document.querySelector('#cardA').classList.remove('eff')
         }
@@ -265,11 +272,62 @@
                 console.log('selecetd ' + i)
                 for (let j = 0; j < tabContents.length; j++) {
                     tabContents[j].style.display = 'none'
+                    tabContents[j].setAttribute('aria-hidden', 'true')
+                    tabButtons[j].setAttribute('aria-selected', 'false')
                 }
                 tabContents[i].style.display = 'block'
+                tabContents[i].setAttribute('aria-hidden', 'false')
+                tabButtons[i].setAttribute('aria-selected', 'true')
+            })
+
+            tabButtons[i].addEventListener('focus', () => {
+                console.log('selecetd ' + i)
+                for (let j = 0; j < tabContents.length; j++) {
+                    tabContents[j].style.display = 'none'
+                    tabButtons[j].setAttribute('aria-selected', 'false')
+                }
+                tabContents[i].style.display = 'block'
+                tabButtons[i].setAttribute('aria-selected', 'true')
             })
         }
 
+        // game script
+        //tudlo
+        const playBtn = document.getElementById("playBtn");
+        const restartBtn = document.getElementById("restartBtn");
+        const resultDiv = document.getElementById("result");
+        const spinnerDiv = document.getElementById("spinner");
+
+        playBtn.addEventListener("click", () => {
+            const prizes = ["No prize", "10% discount coupon", "100% discount coupon"];
+            let spinCount = 0;
+
+            // Show spinning animation
+            const spinInterval = setInterval(() => {
+                spinnerDiv.textContent = prizes[spinCount % prizes.length];
+                spinCount++;
+            }, 300);
+
+            // Stop spinning after 2 seconds and show result
+            setTimeout(() => {
+                clearInterval(spinInterval);
+                const randomPrize = prizes[Math.floor(Math.random() * prizes.length)];
+                spinnerDiv.textContent = "";
+                resultDiv.textContent = `You won: ${randomPrize}!`;
+
+                playBtn.style.display = "none";
+                restartBtn.style.display = "inline-block";
+            }, 2000);
+        });
+
+        restartBtn.addEventListener("click", () => {
+            resultDiv.textContent = "";
+            spinnerDiv.textContent = "";
+            playBtn.style.display = "inline-block";
+            restartBtn.style.display = "none";
+        });        
+
+        
     </script>
 </body>
 </html>
