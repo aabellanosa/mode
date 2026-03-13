@@ -27,10 +27,10 @@
                 <div class="cards">
                     <div id="cardA">
                         <figure>
-                            <img 
-                                src="./images/attraction-a.jpg" 
-                                alt="attraction image a"
-                            >
+                            <picture>
+                                <source srcset="./images/attraction-a.jpg" media="(min-width: 760px)" />
+                                <img src="./images/attraction-a-low-res.jpg" alt="MDN" />
+                            </picture>
                             <figcaption>Park de la Tete</figcaption>
                         </figure>
                     </div>
@@ -157,6 +157,37 @@
                     </div>
                 </div>
             </fieldset>
+        </div>
+        <div class="review">
+            <h2>Review</h2>
+            <div class="carousel">
+                <button id="prev">Prev</button>
+                <div>
+                    <div class="cards">
+                        <div class="card">
+                            <p>The festival was amazing! Great music and atmosphere.</p>
+                            <p>Alice Martin</p>
+                            <p><span>⭐⭐⭐</span></p>
+                        </div>
+                        <div class="card">
+                            <p>The festival was amazing! Great music and atmosphere.</p>
+                            <p>Alice Martin</p>
+                            <p><span>⭐⭐⭐</span></p>
+                        </div>
+                        <div class="card">
+                            <p>The festival was amazing! Great music and atmosphere.</p>
+                            <p>Alice Martin</p>
+                            <p><span>⭐⭐⭐</span></p>
+                        </div>
+                        <div class="card">
+                            <p>The festival was amazing! Great music and atmosphere.</p>
+                            <p>Alice Martin</p>
+                            <p><span>⭐⭐⭐</span></p>
+                        </div>
+                    </div>
+                </div>
+                <button id="next">Next</button>
+            </div>
         </div>
         <div class="game">
             <h2>🎉 Event Coupon Game 🎉</h2>
@@ -327,7 +358,86 @@
             restartBtn.style.display = "none";
         });        
 
-        
+        //review
+        reviews = [
+            {
+                "author": "Alice Martin",
+                "content": "The festival was amazing! Great music and atmosphere.",
+                "rating": 5
+            },
+            {
+                "author": "John Doe",
+                "content": "Good experience, but the food options were limited.",
+                "rating": 4
+            },
+            {
+                "author": "Sophia Lee",
+                "content": "It was okay, but a bit overcrowded.",
+                "rating": 3
+            },
+            {
+                "author": "Michael Brown",
+                "content": "Not what I expected. The event felt unorganized.",
+                "rating": 2
+            },
+            {
+            "author": "Emily Davis",
+            "content": "Very disappointing. Poor management and lack of activities.",
+            "rating": 1
+        }
+        ]
+
+        // const cards = document.querySelectorAll(".card");
+        const nextBtn = document.getElementById("next");
+        const prevBtn = document.getElementById("prev");
+
+        let currentIndex = 0;
+
+        function updateCards() {
+            cards.forEach((card, index) => {
+                card.classList.remove("center", "side", "hidden");
+
+                if (index === currentIndex) {
+                    card.classList.add("center");
+                } else if ((index === currentIndex - 1 || index === currentIndex + 1) && currentIndex !== 0) {
+                    card.classList.add("side");
+                } else {
+                    card.classList.add("hidden");
+                }
+            });
+        }
+
+        nextBtn.addEventListener("click", () => {
+            if (currentIndex < cards.length - 1) {
+                currentIndex++;
+                updateCards();
+            }
+        });
+
+        prevBtn.addEventListener("click", () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCards();
+            }
+        });
+
+        let allReviews = ""
+        console.log(reviews)
+        reviews.forEach(review => {
+            allReviews += `
+                <div class="card">
+                    <q>${review.content}</q>
+                    <p>${review.author}</p>
+                    <p><span>${'⭐'.repeat(review.rating)}</span></p>
+                </div>
+        `
+        })
+        document.querySelector('.carousel .cards').innerHTML = allReviews
+        // Initialize
+        const cards = document.querySelectorAll(".carousel .card");
+
+        updateCards();
+
     </script>
 </body>
 </html>
