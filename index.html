@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lyon Tourist Page</title>
     <link rel="stylesheet" href="./css/style.css">
-
+    <link rel="stylesheet" href="./css/calstyle.css">
 </head>
 <body>
     <header>
@@ -157,6 +157,28 @@
                     </div>
                 </div>
             </fieldset>
+        </div>
+        <div class="calendar">
+            <h2>Event Calendar</h2>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prev">Prev</button>
+                    <h2 id="month-year"></h2>
+                    <button id="next">Next</button>
+                </div>
+                <div class="calendar-grid" id="calendar"></div>
+            </div>
+            
+            <!-- Popup -->
+            <div id="popup" class="popup hidden">
+                <div class="popup-content">
+                    <span id="close">&times;</span>
+                    <h3 id="popup-title"></h3>
+                    <p id="popup-dates"></p>
+                    <p id="popup-category"></p>
+                    <p id="popup-description"></p>
+                </div>
+            </div>
         </div>
         <div class="review">
             <h2>Review</h2>
@@ -439,5 +461,6 @@
         updateCards();
 
     </script>
+    <script src="./js/calscript.js"></script>
 </body>
 </html>
