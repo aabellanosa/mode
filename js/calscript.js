@@ -64,8 +64,6 @@ function renderCalendar() {
             event.end = end.toISOString().slice(0, 10);
             //para sa printing sa calendar adjustan og 1 day
             start.setDate(start.getDate() - 1);
-            console.log(start, 'start')
-            console.log(end, 'end')
 
             if ((date >= start && date <= end)) {
                 console.log('Milds')
