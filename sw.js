@@ -1,5 +1,5 @@
 const CACHE_NAME = 'offline-cache-v2';
-const OFFLINE_URL = '/offline.html';
+const OFFLINE_URL = './offline.html';
 
 // List all essential assets you want available offline
 const OFFLINE_ASSETS = [
