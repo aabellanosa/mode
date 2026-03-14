@@ -1,16 +1,16 @@
 const CACHE_NAME = 'offline-cache-v2';
-const OFFLINE_URL = './mode/offline.html';
+const OFFLINE_URL = './offline.html';
 
 // List all essential assets you want available offline
 const OFFLINE_ASSETS = [
     OFFLINE_URL,
-    './mode/css/style.css',
-    './mode/images/worldskills-2024-p.jpg',
-    './mode/images/fda-p.jpg',
-    './mode/images/lyon-kayak-p-0.jpg',
-    './mode/images/semaine-bleue-2024-p.jpg',
-    './mode/images/village-des-metiers-p.jpg',
-    './mode/images/journees_portes_ouvertes_entreprises_2023_p.jpg',
+    './css/style.css',
+    './images/worldskills-2024-p.jpg',
+    './images/fda-p.jpg',
+    './images/lyon-kayak-p-0.jpg',
+    './images/semaine-bleue-2024-p.jpg',
+    './images/village-des-metiers-p.jpg',
+    './images/journees_portes_ouvertes_entreprises_2023_p.jpg',
 ];
 
 self.addEventListener('install', event => {
