@@ -24,6 +24,7 @@ function renderCalendar() {
 
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
+    console.log(firstDay, daysInMonth)
 
     // Fill empty slots before first day
     for (let i = 0; i < firstDay; i++) {

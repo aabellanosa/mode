@@ -369,6 +369,15 @@ legend {
     height: 40px;
 }
 
+.shown {
+    transition: all .2s ease;
+    opacity: 1;
+}
+
+.shownOut {
+    opacity: 0;
+}
+
 /* footer style */
 footer {
     background-color: #c9bdbd;

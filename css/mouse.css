@@ -1,0 +1,32 @@
+.glow-button {
+    padding: 12px 24px;
+    font-size: .8rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.glow-button::before {
+    content: "";
+    position: absolute;
+    top: var(--y, 50%);
+    left: var(--x, 50%);
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    /* background: radial-gradient(circle, rgba(0, 255, 255, 0.6) 0%, transparent 70%); */
+    background: radial-gradient(circle, rgba(157, 188, 188, 0.6) 0%, transparent 70%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.glow-button:hover {
+    /* border-color: cyan;
+    box-shadow: 0 0 15px cyan; */
+}
+
+.glow-button:hover::before {
+    width: 75px;
+    height: 75px;
+}

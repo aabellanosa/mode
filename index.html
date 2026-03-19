@@ -6,6 +6,7 @@
     <title>Lyon Tourist Page</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/calstyle.css">
+    <link rel="stylesheet" href="./css/mouse.css">
 </head>
 <body>
     <header>
@@ -19,7 +20,7 @@
     <main>
         <div class="hero">
             <!-- <img src="/images/cover.jpg" alt="hero image"> -->
-             <button>Call To Action</button>
+             <button class="glow-button">Call To Action</button>
         </div>
         <div class="map">
             <h2>Map Attractions</h2>
@@ -72,7 +73,7 @@
             </div>
         </div>
         <div class="vid">
-            <video loop>
+            <video loop autoplay>
                 <source src="./video/lyon.mp4" type="video/mp4" />
                 <p>
                     Your browser doesn't support HTML video. Here is a
@@ -89,7 +90,7 @@
             </div>
             <div class="events">
                 <h2>Latest Events</h2>
-                <div>
+                <div id="eventsholder">
                     <figure>
                         <img src="./images/worldskills-2024-p.jpg" alt="event image a">
                         <figcaption>Lyon accueille la finale mondiale des Worldskills 2024</figcaption>
@@ -212,7 +213,10 @@
             </div>
         </div>
         <div class="game">
-            <h2>🎉 Event Coupon Game 🎉</h2>
+            <h2><span id="popper">🎉</span><span id="firecracker">🧨</span> 
+                    Event Coupon Game 
+                <span id="popper2">🎉</span><span id="firecracker2">🧨</span>
+            </h2>
             <p>Click the button to try your luck!</p>
             <button id="playBtn">Play</button>
             <div id="spinner"></div>
@@ -358,6 +362,17 @@
             // Show spinning animation
             const spinInterval = setInterval(() => {
                 spinnerDiv.textContent = prizes[spinCount % prizes.length];
+                if (spinCount % 2 == 0) {
+                    document.getElementById('popper').classList.add('shownOut')
+                    document.getElementById('firecracker').classList.add('shownOut')
+                    document.getElementById('popper2').classList.add('shownOut')
+                    document.getElementById('firecracker2').classList.add('shownOut')
+                } else {
+                    document.getElementById('popper').classList.remove('shownOut')
+                    document.getElementById('firecracker').classList.remove('shownOut')
+                    document.getElementById('popper2').classList.remove('shownOut')
+                    document.getElementById('firecracker2').classList.remove('shownOut')
+                }
                 spinCount++;
             }, 300);
 
@@ -467,8 +482,32 @@
                 .catch(err => console.error('SW registration failed:', err));
         }
 
+        //for latest event loop
+        fetch('latestevents.json')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                return response.json();
+            })
+            .then((latestevents) => {
+                let allLatest = ''
+                latestevents.forEach(event => {
+                    allLatest += `
+                        <figure>
+                            <img src="./images/${event.src}" alt="${event.alt}">
+                            <figcaption>${event.caption}</figcaption>
+                        </figure>
+                    `
+                })
+                document.getElementById('eventsholder')
+                .innerHTML = allLatest
+            });
+
 
     </script>
     <script src="./js/calscript.js"></script>
+    <script src="./js/mouse.js"></script>
 </body>
 </html>
